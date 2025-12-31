@@ -1,0 +1,243 @@
+:root {
+  font-size: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #1f2937;
+  background-color: white;
+  padding-top: 60px; 
+}
+
+
+
+.header {
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  /* 固定不动 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.top {
+  width: 1600px;
+  margin: 0 auto;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.topleft {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  padding: 0 15px;
+  gap: 520px;
+}
+
+.logo img {
+  height: 80px;
+  width: auto;
+  display: block;
+}
+
+.logo-text {
+  font-size: 30px;
+  font-weight: 800;
+  color: #1f2937;
+  margin-left: 0;
+}
+
+/* 外层布局 */
+.bigmain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  margin: 24px auto;
+  width: 1600px;
+  height: 800px;
+  background-image: url('../img/background.png');
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+}
+
+/* 广告图片 */
+.ad {
+  width: 600px;
+  height: 480px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+  border: 1px solid #e5e7eb;
+}
+
+/* 注册主容器 */
+#main {
+  width: 600px;
+  height: 480px;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* 注册标题 */
+#main h1 {
+  width: 100%;
+  font-size: 2.2rem;
+  margin: 0 0 20px 0;
+  color: black;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* 表单项目 */
+.form-item {
+  width: 520px;
+  height: 48px;
+  background-image: url('../img/back.jpg');
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid #e5e7eb;
+  padding: 0 15px;
+  margin-bottom: 10px;
+}
+
+/* 表单标签 */
+.form-item label {
+  color: black; 
+  font-weight: 500;
+  width: 80px;
+  text-align: left;
+}
+
+/* 输入框 */
+.form-input {
+  width: 350px;
+  height: 44px;
+  border: 2px solid gainsboro;
+  outline: none;
+  font-size: 1.6rem;
+  padding: 0 15px;
+  border-radius: 4px;
+  color: black;
+}
+
+/* 单选框组 */
+.radio-group {
+  display: flex;
+  gap: 30px;
+  width: 350px;
+}
+
+/* 单选,复选框样式 */
+#main input[type="radio"],#main input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  accent-color: #6366f1;
+}
+
+#main span {
+  display: flex;
+  align-items: center;
+  color: #4b5563;
+  font-size: 1.5rem;
+}
+
+/* 同意协议行 */
+.agree-wrap {
+  height: auto;
+  padding: 10px 0;
+}
+
+.agree-wrap input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+
+/* 爱好 */
+.hobby {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  width: 280px;
+  margin-left: 10px;
+}
+
+/* 下拉选择框*/
+.form-select {
+  width: 200px;
+  height: 44px;
+  border: 2px solid #e5e7eb;
+  outline: none;
+  font-size: 1.6rem;
+  padding: 0 15px;
+  border-radius: 4px;
+  color: #1f2937;
+  background-color: white;
+  margin-right: 15px;
+}
+
+/* 注册按钮 */
+.login-btn {
+  width: 120px;
+  height: 44px;
+  font-size: 1.6rem;
+  background-color: #1f2937;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.login-btn:hover {
+  background-color: #4b5563;
+}
+
+
+footer {
+  background-color: whitesmoke;
+  color: dimgray;
+  padding: 20px 0;
+  margin-top: 40px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.bigfooter {
+  width: 1600px;
+  margin: 0 auto;
+  font-size: 1.4rem;
+}
+
+.footer-massage {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #999;
+}

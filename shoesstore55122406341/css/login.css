@@ -1,0 +1,284 @@
+:root {
+  font-size: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
+body {
+  color: #1f2937;
+  background-color: white;
+  padding-top: 60px; 
+}
+
+
+.header {
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.top {
+  width: 1600px;
+  margin: 0 auto;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.topleft {
+  display: flex;
+  align-items: center;
+  
+}
+
+.logo {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  padding: 0 15px;
+  gap: 520px;
+}
+
+.logo img {
+  height: 80px;
+  width: auto;
+  display: block;
+}
+
+.logo-text {
+  font-size: 30px;
+  font-weight: 800;
+  color: #1f2937;
+  margin-left: 0;
+}
+
+
+.bigmain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  margin: 24px auto;
+  width: 1600px;
+  height: 800px;
+  background-image: url('../img/background.png');
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+}
+
+
+.ad {
+  width: 600px;
+  height: 480px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+
+#main {
+  width: 600px;
+  height: 480px;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+}
+
+/* 登录标题 */
+#main h1 {
+  width: 100%;
+  font-size: 2.2rem;
+  margin: 0 0 20px 0;
+  color: black;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* 登录选项 */
+.tabs {
+  width: 100%;
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-bottom: 10px;
+}
+
+.tabs .active {
+  color: black /* 注册页主题色 */
+  font-weight: 700;
+  position: relative;
+}
+
+.tabs .active::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  width: 24px;
+  height: 2px;
+  background: gray; /* 注册页主题色 */
+}
+
+/* 表单项目样式 */
+.form-item {
+  width: 520px;
+  height: 48px;
+  background-image: url('../img/back.jpg');
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid #e5e7eb;
+  padding: 0 15px;
+  margin-bottom: 10px;
+}
+
+/* 表单标*/
+.form-item label {
+  color: black; 
+  font-weight: 500;
+  width: 80px;
+  text-align: left;
+}
+
+/* 输入框样式 */
+.form-input {
+  width: 350px;
+  height: 44px;
+  border: 2px solid gainsboro;
+  outline: none;
+  font-size: 1.6rem;
+  padding: 0 15px;
+  border-radius: 4px;
+  color: black;
+}
+
+
+/* 密码输入框特殊样式 */
+.password {
+  position: relative;
+}
+
+
+/* 同意协议行样式适配 */
+.agree{
+  height: auto;
+  padding: 10px 0;
+  justify-content: flex-start;
+}
+
+.agree input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+
+}
+
+/* 通用链接样式 */
+a {
+  color: #005ea7;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* 登录按钮 */
+.login-btn {
+  width: 100%;
+  height: 44px;
+  font-size: 1.6rem;
+  background-color: #1f2937;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.login-btn:hover {
+  background-color: #4b5563; /* 注册页按钮hover色 */
+}
+
+/* 辅助链接组 */
+.link-wrap {
+  width: 100%;
+  font-size: 1.2rem;
+  color: #666;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 10px 0;
+}
+
+/* 第三方登录 */
+.third-login {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.third-title {
+  font-size: 1.2rem;
+  color: #999;
+}
+
+/* 第三方图标容器 */
+.third-icons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.third-icons img {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+
+
+footer {
+  background-color: whitesmoke;
+  color: dimgray;
+  padding: 20px 0;
+  margin-top: 40px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.bigfooter {
+  width: 1600px;
+  margin: 0 auto;
+  font-size: 1.4rem;
+}
+
+.footer-massage {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #999;
+}

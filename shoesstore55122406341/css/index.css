@@ -1,0 +1,534 @@
+/* 全局样式重置 + 基准设置 */
+:root {
+    font-size: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    color: black; 
+    background-color: white;
+    padding-top: 80px;
+}
+
+.header {
+    width: 100%; 
+    background-color: whitesmoke;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.top {
+    width: 1600px;   
+    margin: 0 auto;
+    height: auto;
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.top-search {
+    flex: 1;
+    margin: 0 20px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-input {
+    width: 500px;
+    height: 36px;
+    border: 2px solid black; 
+    outline: none;
+    font-size: 1.4rem;
+    padding: 0 15px;
+    border-radius: 4px 0 0 4px;
+    margin: 0;
+}
+
+.search-button {
+    width: 80px;
+    height: 40px;
+    font-size: 1.4rem;
+    background-color: #1f2937; 
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+}
+
+.search-button:hover {
+    background-color: #4b5563; 
+}
+
+.topleft ul, .topright ul {
+    display: flex;
+    align-items: center;
+}
+
+.topleft li, .topright li {
+    margin: 0 8px;
+    font-size: 1.5rem;
+    color: #666; 
+    cursor: pointer;
+}
+
+.topleft a, .topright a {
+    color: #666; 
+    padding: 2px 4px;
+    border-radius: 2px;
+}
+
+.topleft a:hover, .topright a:hover {
+    color: #6366f1;
+}
+
+.topright img {
+    margin-right: 4px;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+
+/* logo + 导航 并排*/
+.logo-nav-row {
+    width: 1600px;  
+    height: 80px;
+    margin: 0 auto;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.logo img {
+    height: 80px;
+    width: 160px;
+    display: block;
+}
+
+/* 导航栏 */
+.nav {
+    background-color: transparent; 
+    padding: 0;
+	margin-left: 300px;
+}
+
+.nav ul {
+    font-size: 1.6rem;
+    width: auto; 
+    height: 50px;
+    margin: 0;
+    display: flex;
+    gap: 40px;
+}
+
+.nav ul li {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 10px;
+    line-height: 50px;
+    position: relative;
+}
+
+.nav ul li::after {
+    content: '';
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #6366f1;
+}
+
+
+.nav ul li:hover {
+    color: #6366f1; 
+}
+
+.li-selected-style {
+    color: #6366f1; 
+}
+
+/* 轮播图 */
+.bigbanner {
+    width: 1600px;
+    height: 300px;
+    margin: 15px auto;
+    position: relative;
+}
+
+.bigbanner .banner {
+    width: 1600px;
+    height: 300px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.banner-btn {
+    position: absolute;
+    top: 130px;
+    width: 40px;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+.banner-left {
+    left: 10px;
+}
+
+.banner-right {
+    right: 10px;
+}
+
+.banner-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 1300px;
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: white;
+}
+
+/* 主内容容器样式 */
+.main {
+    width: 1600px; 
+    height: auto;
+    margin: 0 auto 30px;
+    display: flex;
+    gap: 25px;  
+}
+
+.left {
+    width: 200px;
+    height: auto;
+    flex-shrink: 0;
+    border: 1px solid #e5e7eb; 
+    border-radius: 4px;
+    padding: 15px;
+}
+
+.left-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #1f2937; 
+    padding-bottom: 10px;
+    border-bottom: 2px solid #6366f1; 
+    margin-bottom: 15px;
+}
+
+.left-menu li {
+    font-size: 1.5rem;
+    padding: 8px 0;
+    cursor: pointer;
+}
+
+.left-menu li:hover {
+    color: #6366f1; 
+}
+
+.left-active {
+    color: #6366f1; 
+    font-weight: bold;
+}
+
+.left-ad {
+    height: 80px;
+    width: 210px;
+    padding: 0;
+    margin: 0;
+}
+
+.left-ad img {
+    margin: 15px 0 0 0;
+    height: 70px;
+    width: 210px;
+}
+
+.left-subtitle {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #4b5563; 
+}
+
+.left-hot ul li {
+    display: flex;
+    gap: 10px;
+    padding: 8px 0;
+}
+
+.left-hot ul li img {
+    width: 40px;
+    height: 40px;
+}
+
+.hot-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.hot-name {
+    font-size: 1.2rem;
+}
+
+.hot-price {
+    font-size: 1.3rem;
+    color: #6366f1; 
+    font-weight: bold;
+    margin-top: 2px;
+}
+
+/* 商品列表样式 */
+.product-list {
+    width: 1220px;
+    border: 1px solid #e5e7eb; 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; 
+    background-image: url('../img/back3.jpg');
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.product-item {
+    width: 160px;
+    height: 260px;      
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+    text-align: center;
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid #eee; 
+    flex-shrink: 0;   
+}
+
+.product-item img {
+    width: 140px;
+    height: 140px;
+    border: 1px solid #f0f0f0; 
+}
+
+.product-name {
+    font-size: 1.3rem;
+    color: #1f2937; 
+    overflow: hidden;
+    margin-bottom: 6px;
+    width: 100%;
+}
+
+.product-price {
+    color: #6366f1; 
+    font-size: 1.4rem;
+    font-weight: bold;
+    width: 100%;
+}
+
+/* 右侧栏样式 */
+.right {
+    width: 200px;
+    height: auto;
+    flex-shrink: 0;
+    border: 1px solid #e5e7eb; 
+    border-radius: 4px;
+    padding: 15px;
+}
+
+.right aside ul > li {
+    margin: 8px 0;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color:ghostwhite;
+    font-size: 1.5rem;
+}
+
+.right aside ul > li:hover {
+    background-color: ghostwhite;
+}
+
+.right aside ul > li::before {
+    content: '>';
+    color: white;
+    margin-right: 8px;
+}
+
+.right aside ul ol {
+    display: none;
+    width: 180px;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 8px 0;
+    z-index: 99;
+}
+
+.right aside ul ol li {
+    padding: 6px 15px;
+    font-size: 1.4rem;
+}
+
+.right aside ul ol li:hover {
+    background-color: whitesmoke;
+}
+
+.right aside ul ol li::before {
+    content: '-';
+}
+
+.right aside ul > li:hover ol {
+    display: block;
+}
+
+
+.right-delivery {
+    margin-top: 30px;
+}
+
+.dlist {
+    font-size: 1.3rem;
+    color: #4b5563; 
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.delivery-item {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.icon-check {
+    color: #6366f1; 
+    margin-right: 6px;
+}
+
+
+.money{
+    margin-top: 20px;
+}
+
+.moneycard {
+    background:#6366f1 ; 
+    border-radius: 8px;
+    padding: 10px;
+    color: white;
+    margin-top: 10px;
+}
+
+.howmoney {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.moneyuseful {
+    font-size: 1.2rem;
+}
+
+.moneynow {
+    width: 100%;
+    background: white;
+    color: #6366f1; 
+    border: none;
+    border-radius: 4px;
+    padding: 4px 0;
+    margin-top: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* 在线客服 */
+.service {
+    margin-top: 20px;
+    background: #f9fafb; 
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+}
+
+.service {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #1f2937; 
+    margin-bottom: 8px;
+}
+
+.service-phone {
+    font-size: 1.3rem;
+    color: #6366f1; 
+    font-weight: bold;
+}
+
+.service-time {
+    font-size: 1.2rem;
+    color: #9ca3af; 
+    margin-top: 4px;
+}
+
+
+footer {
+    background-color: whitesmoke;
+    color: dimgray;
+    padding: 20px 0;
+    margin-top: 40px;
+    border-top: 1px solid #e5e7eb; 
+}
+
+.bigfooter {
+    width: 1600px;
+    margin: 0 auto;
+    font-size: 1.4rem;
+}
+
+.footer-nav {
+    text-align: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #eee;
+}
+
+.footer-nav a {
+    color: dimgray;
+    text-decoration: none;
+    margin: 0 18px;
+}
+
+.footer-nav a:hover {
+    color: #6366f1; 
+}
+
+.footer-massage {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #999;
+}
