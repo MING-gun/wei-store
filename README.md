@@ -1,1 +1,1 @@
-# wei-s-shoe-store
+# wei store
