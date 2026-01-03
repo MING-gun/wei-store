@@ -249,12 +249,40 @@ body {
 
 .left-menu li {
 	font-size: 1.5rem;
-	padding: 8px 0;
+	padding: 10px 15px;
 	cursor: pointer;
+	transition: all 0.3s ease;
+	border-radius: 4px;
+	margin: 2px 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.left-menu li::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 0;
+	background-color: rgba(99, 102, 241, 0.1);
+	transition: width 0.3s ease;
+	z-index: -1;
 }
 
 .left-menu li:hover {
 	color: #6366f1;
+	transform: translateX(8px);
+}
+
+.left-menu li:hover::before {
+	width: 100%;
+}
+
+.left-menu li.left-active {
+	color: #6366f1;
+	font-weight: bold;
+	background-color: rgba(99, 102, 241, 0.1);
 }
 
 .left-active {
