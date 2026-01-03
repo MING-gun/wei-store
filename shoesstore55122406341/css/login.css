@@ -124,19 +124,17 @@ body {
 }
 
 .tabs .active {
-	color: black/* 注册页主题色 */
+	color: #6366f1;/* 注册页主题色 */
 	font-weight: 700;
 	position: relative;
 }
 
-.tabs .active::after {
-	position: absolute;
-	bottom: -8px;
-	left: 50%;
-	width: 24px;
-	height: 2px;
-	background: gray;
-	/* 注册页主题色 */
+.active .line {
+    height: 4px;
+    width: 100%;
+    margin-top: 5px;
+    border-radius: 50%;
+    background-color: #6366f1;
 }
 
 /* 表单项目样式 */
