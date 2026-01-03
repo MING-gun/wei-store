@@ -267,12 +267,14 @@ body {
 	width: 0;
 	background-color: rgba(99, 102, 241, 0.1);
 	transition: width 0.3s ease;
+	/* 擦除，紫色背景条伸缩效果 */
 	z-index: -1;
 }
 
 .left-menu li:hover {
 	color: #6366f1;
 	transform: translateX(8px);
+	/* 悬停时文字向右移动 */
 }
 
 .left-menu li:hover::before {
@@ -357,7 +359,6 @@ body {
 	background-image: url('../img/back3.jpg');
 	border-radius: 4px;
 	padding: 20px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .product-item {
@@ -375,11 +376,6 @@ body {
 	flex-shrink: 0;
 	cursor: pointer;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.product-item:hover {
-	transform: scale(1.05);
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .product-item img {
