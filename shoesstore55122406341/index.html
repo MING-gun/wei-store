@@ -15,9 +15,9 @@
 				<div class="top">
 					<div class="topleft">
 						<ul>
-							<li><a href="#"> 你好，请登录</a></li>
+							<li><a href="login.html"> 你好，请登录</a></li>
 							<li>|</li>
-							<li><a href="file:///C:/Users/Lenovo/Desktop/shoesstore55122406341/register.html">注册</a>
+							<li><a href="register.html">注册</a>
 							</li>
 						</ul>
 					</div>
@@ -59,7 +59,7 @@
 			</div>
 
 			<!-- 轮播图 -->
-			<div id="banner" class="bigbanner">
+			<div id="banner" class="bigbanner" @mouseenter="pauseBanner" @mouseleave="resumeBanner">
 				<img :src="bannerimages[bannerindex]" alt="" class="banner" />
 				<!-- 左切换按钮 -->
 				<button class="banner-btn banner-left" @click="prevBanner">&lt;</button>
@@ -230,6 +230,7 @@
 							'img/banner (5).png'
 						],
 						bannerindex: 0,
+						bannerTimer: null,
 						allProducts: [{
 								name: 'Nike Kybrid S2 EP ',
 								price: 2559,
@@ -508,13 +509,26 @@
 					// 下一张轮播图
 					nextBanner() {
 						this.bannerindex = (this.bannerindex + 1) % this.bannerimages.length;
+					},
+					// 暂停轮播
+					pauseBanner() {
+						if (this.bannerTimer) {
+							clearInterval(this.bannerTimer);
+							this.bannerTimer = null;
+						}
+					},
+					// 恢复轮播
+					resumeBanner() {
+						if (!this.bannerTimer) {
+							this.bannerTimer = setInterval(this.changebannerindex, 1000);
+						}
 					}
 				},
 				created() {
 					this.showProducts = [...this.allProducts];
 					this.hotProducts = this.allProducts.slice(0, 5);
 
-					setInterval(this.changebannerindex, 1000);
+					this.bannerTimer = setInterval(this.changebannerindex, 1000);
 				}
 			});
 			app.mount('#app');

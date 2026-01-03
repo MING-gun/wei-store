@@ -170,6 +170,7 @@ body {
 	height: 300px;
 	margin: 15px auto;
 	position: relative;
+	cursor: pointer;
 }
 
 .bigbanner .banner {

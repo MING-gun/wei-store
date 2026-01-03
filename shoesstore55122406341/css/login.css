@@ -140,11 +140,10 @@ body {
 /* 表单项目样式 */
 .form-item {
 	width: 520px;
-	height: 50px;
+	height: 60px;
 	background-image: url('../img/back.jpg');
 	font-size: 1.5rem;
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 	border-radius: 4px;
 	border: 1px solid #e5e7eb;
@@ -152,12 +151,13 @@ body {
 	margin-bottom: 10px;
 }
 
-/* 表单标*/
+/* 表单标签*/
 .form-item label {
 	color: black;
 	font-weight: 500;
 	width: 80px;
-	text-align: left;
+	text-align: right;
+	margin-right: 15px;
 }
 
 /* 输入框样式 */
