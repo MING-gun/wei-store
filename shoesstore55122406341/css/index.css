@@ -158,7 +158,7 @@ body {
 /* logo + 导航 并排*/
 .logo-nav-row {
 	width: 1600px;
-	height: 80px;
+	height: 90px;
 	margin: 0 auto;
 	padding: 10px 0;
 	display: flex;
@@ -169,7 +169,7 @@ body {
 
 .logo img {
 	height: 80px;
-	width: 160px;
+	width: 150px;
 	display: block;
 	object-fit: contain;
 	transition: transform 0.3s ease;
@@ -183,19 +183,22 @@ body {
 .nav {
 	background-color: transparent;
 	padding: 0;
-	margin: 0 auto;
-	flex: 1;
+	margin-left: 350px;
 	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .nav ul {
 	font-size: 1.6rem;
-	width: auto;
+	width: 600px;
 	height: 50px;
 	margin: 0;
 	display: flex;
-	gap: 40px;
+	gap: 30px;
 	justify-content: center;
+	align-items: center;
 }
 
 .nav ul li {
