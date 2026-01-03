@@ -1,330 +1,523 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <title>张玮的运动鞋商店</title>
-    <!-- 引入外部CSS文件 -->
-    <link rel="stylesheet" href="css/index.css" />
-    <!-- 引入Vue文件 -->
-    <script src="js/vue.global.js"></script>
-</head>
-<body>
-    <div id="app">
-        <!-- 头部 -->
-        <div class="header">
-            <div class="top">
-                <div class="topleft">
-                    <ul>
-                        <li><a href="#"> 你好，请登录</a></li>
-                        <li>|</li>
-                        <li><a href="file:///C:/Users/Lenovo/Desktop/shoesstore55122406341/register.html">注册</a></li>
-                    </ul>
-                </div>
+	<head>
+		<meta charset="utf-8" />
+		<title>张玮的运动鞋商店</title>
+		<!-- 引入外部CSS文件 -->
+		<link rel="stylesheet" href="css/index.css" />
+		<!-- 引入Vue文件 -->
+		<script src="js/vue.global.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 头部 -->
+			<div class="header">
+				<div class="top">
+					<div class="topleft">
+						<ul>
+							<li><a href="#"> 你好，请登录</a></li>
+							<li>|</li>
+							<li><a href="file:///C:/Users/Lenovo/Desktop/shoesstore55122406341/register.html">注册</a>
+							</li>
+						</ul>
+					</div>
 
 
-                <div class="top-search">
-                    <div class="search-box">
-                        <input type="text" v-model="searchKey" class="search-input" placeholder="请输入商品名称搜索..." />
-                        <button class="search-button" @click="search">搜索</button>
-                    </div>
-                </div>
+					<div class="top-search">
+						<div class="search-box">
+							<input type="text" v-model="searchKey" class="search-input" placeholder="请输入商品名称搜索..." />
+							<button class="search-button" @click="search">搜索</button>
+						</div>
+					</div>
 
-                <div class="topright">
-                    <ul>
-                        <li><a href="#"><img src="img/buy.jpg" alt=""/>购物车</a></li>
-                        <li>|</li>
-                        <li><a href="#"> 我的购买</a></li>
-                        <li>|</li>
-                        <li><a href="#"> 在线客服</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+					<div class="topright">
+						<ul>
+							<li><a href="#"><img src="img/buy.jpg" alt="" />购物车</a></li>
+							<li>|</li>
+							<li><a href="#"> 我的购买</a></li>
+							<li>|</li>
+							<li><a href="#"> 在线客服</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
 
-        <!-- logo + 导航栏 -->
-        <div class="logo-nav-row">
-            <div class="logo">
-                <h1><a href="#"><img src="img/logo.jpg" alt="张玮的运动鞋商店"/></a></h1>
-            </div>
-            <!-- 导航栏与logo并排 -->
-            <div class="nav">
-                <ul>
-                    <li v-for="(item,index) in navtitle" :key="index"
-                        @click="liclick(index)" 
-                        :class="li_selected_ix === index ? 'li-selected-style' : ''">
-                        {{item}}
-                    </li>
-                </ul>
-            </div>
-        </div>
+			<!-- logo + 导航栏 -->
+			<div class="logo-nav-row">
+				<div class="logo">
+					<h1><a href="#"><img src="img/logo.jpg" alt="张玮的运动鞋商店" /></a></h1>
+				</div>
+				<!-- 导航栏与logo并排 -->
+				<div class="nav">
+					<ul>
+						<li v-for="(item,index) in navtitle" :key="index" @click="liclick(index)"
+							:class="li_selected_ix === index ? 'li-selected-style' : ''">
+							{{item}}
+						</li>
+					</ul>
+				</div>
+			</div>
 
-        <!-- 轮播图 -->
-        <div id="banner" class="bigbanner">
-            <img :src="bannerimages[bannerindex]" alt="" class="banner" />
-            <!-- 左切换按钮 -->
-            <button class="banner-btn banner-left" @click="prevBanner">&lt;</button>
-            <!-- 右切换按钮） -->
-            <button class="banner-btn banner-right" @click="nextBanner">&gt;</button>
-            <!-- 圆点指示器 -->
-            <div class="banner-dots">
-                <span 
-                    class="dot" 
-                    v-for="(item, index) in bannerimages" 
-                    :key="index"
-                    :class="{ active: index === bannerindex }"
-                    @click="bannerindex = index"
-                ></span>
-            </div>
-        </div>
+			<!-- 轮播图 -->
+			<div id="banner" class="bigbanner">
+				<img :src="bannerimages[bannerindex]" alt="" class="banner" />
+				<!-- 左切换按钮 -->
+				<button class="banner-btn banner-left" @click="prevBanner">&lt;</button>
+				<!-- 右切换按钮） -->
+				<button class="banner-btn banner-right" @click="nextBanner">&gt;</button>
+				<!-- 圆点指示器 -->
+				<div class="banner-dots">
+					<span class="dot" v-for="(item, index) in bannerimages" :key="index"
+						:class="{ active: index === bannerindex }" @click="bannerindex = index"></span>
+				</div>
+			</div>
 
-        <!-- 主内容区 -->
-        <div class="main">
-            <!-- 左侧边栏 -->
-            <div class="left">
-                <div class="left-title">分类导航</div>
-                <ul class="left-menu">
-                    <li v-for="(item,index) in navtitle" :key="index"
-                        @click="liclick(index)"
-                        :class="li_selected_ix === index ? 'left-active' : ''">
-                        {{item}}
-                    </li>
-                </ul>
-                <div class="left-ad">
-                    <img src="img/ad.jpg" alt="侧边广告" />
-                </div>
-                <div class="left-hot">
-                    <div class="left-subtitle">热销排行</div>
-                    <ul>
-                        <li v-for="(product, index) in hotProducts" :key="index">
-                            <img :src="'img/' + product.image" alt="" />
-                            <div class="hot-info">
-                                <div class="hot-name">{{product.name}}</div>
-                                <div class="hot-price">¥{{product.price}}</div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+			<!-- 主内容区 -->
+			<div class="main">
+				<!-- 左侧边栏 -->
+				<div class="left">
+					<div class="left-title">分类导航</div>
+					<ul class="left-menu">
+						<li v-for="(item,index) in navtitle" :key="index" @click="liclick(index)"
+							:class="li_selected_ix === index ? 'left-active' : ''">
+							{{item}}
+						</li>
+					</ul>
+					<div class="left-ad">
+						<img src="img/ad.jpg" alt="侧边广告" />
+					</div>
+					<div class="left-hot">
+						<div class="left-subtitle">热销排行</div>
+						<ul>
+							<li v-for="(product, index) in hotProducts" :key="index">
+								<img :src="'img/' + product.image" alt="" />
+								<div class="hot-info">
+									<div class="hot-name">{{product.name}}</div>
+									<div class="hot-price">¥{{product.price}}</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
 
-            <!-- 中间商品列表 -->
-            <div class="product-list">
-                <div class="product-item" v-for="(product,index) in showProducts" :key="index">
-                    <img :src="'img/' + product.image" alt="商品图片" />
-                    <div class="product-name">{{product.name}}</div>
-                    <div class="product-price">¥{{product.price}}</div>
-                </div>
-            </div>
+				<!-- 中间商品列表 -->
+				<div class="product-list">
+					<div class="product-item" v-for="(product,index) in showProducts" :key="index">
+						<img :src="'img/' + product.image" alt="商品图片" />
+						<div class="product-name">{{product.name}}</div>
+						<div class="product-price">¥{{product.price}}</div>
+					</div>
+				</div>
 
-            <!-- 右侧便栏 -->
-            <div class="right">
-                <div class="left-title">球鞋分类</div>
-                <aside>
-                    <ul>
-                        <li>
-                            篮球鞋
-                            <ol>
-                                <li>实战型</li>
-                                <li>潮流型</li>
-                                <li>高帮款</li>
-                                <li>低帮款</li>
-                            </ol>
-                        </li>
-                        <li>
-                            休闲鞋
-                            <ol>
-                                <li>板鞋</li>
-                                <li>老爹鞋</li>
-                                <li>帆布鞋</li>
-                                <li>阿甘鞋</li>
-                            </ol>
-                        </li>
-                        <li>
-                            功能球鞋
-                            <ol>
-                                <li>徒步</li>
-                                <li>越野</li>
-                                <li>露营</li>
-                                <li>攀岩</li>
-                            </ol>
-                        </li>
-                        <li>限量款
-                            <ol>
-                                <li>联名限量</li>
-                                <li>纪念限量</li>
-                                <li>主题限量</li>
-                                <li>工艺限量</li>
-                            </ol>
-                        </li>
-                        <li>情侣款
-                            <ol>
-                                <li>专业运动</li>
-                                <li>日常休闲</li>
-                                <li>户外轻运动</li>
-                                <li>婚庆定制</li>
-                            </ol>
-                        </li>
-                    </ul>
-                </aside>
+				<!-- 右侧便栏 -->
+				<div class="right">
+					<div class="left-title">球鞋分类</div>
+					<aside>
+						<ul>
+							<li>
+								篮球鞋
+								<ol>
+									<li>实战型</li>
+									<li>潮流型</li>
+									<li>高帮款</li>
+									<li>低帮款</li>
+								</ol>
+							</li>
+							<li>
+								休闲鞋
+								<ol>
+									<li>板鞋</li>
+									<li>老爹鞋</li>
+									<li>帆布鞋</li>
+									<li>阿甘鞋</li>
+								</ol>
+							</li>
+							<li>
+								功能球鞋
+								<ol>
+									<li>徒步</li>
+									<li>越野</li>
+									<li>露营</li>
+									<li>攀岩</li>
+								</ol>
+							</li>
+							<li>限量款
+								<ol>
+									<li>联名限量</li>
+									<li>纪念限量</li>
+									<li>主题限量</li>
+									<li>工艺限量</li>
+								</ol>
+							</li>
+							<li>情侣款
+								<ol>
+									<li>专业运动</li>
+									<li>日常休闲</li>
+									<li>户外轻运动</li>
+									<li>婚庆定制</li>
+								</ol>
+							</li>
+						</ul>
+					</aside>
 
 
-                <div class="right-delivery">
-                    <div class="deliverysay">配送说明</div>
-                    <div class="dlist">
-                        <div class="delivery-item">
-                            <span class="icon-check">✓</span> 全场满299包邮
-                        </div>
-                        <div class="delivery-item">
-                            <span class="icon-check">✓</span> 48小时内发货
-                        </div>
-                        <div class="delivery-item">
-                            <span class="icon-check">✓</span> 7天无理由退换
-                        </div>
-                        <div class="delivery-item">
-                            <span class="icon-check">✓</span> 正品保障假一赔十
-                        </div>
-                    </div>
-                </div>
+					<div class="right-delivery">
+						<div class="deliverysay">配送说明</div>
+						<div class="dlist">
+							<div class="delivery-item">
+								<span class="icon-check">✓</span> 全场满299包邮
+							</div>
+							<div class="delivery-item">
+								<span class="icon-check">✓</span> 48小时内发货
+							</div>
+							<div class="delivery-item">
+								<span class="icon-check">✓</span> 7天无理由退换
+							</div>
+							<div class="delivery-item">
+								<span class="icon-check">✓</span> 正品保障假一赔十
+							</div>
+						</div>
+					</div>
 
-                <div class="money">
-                    <div class="moneysave">优惠券</div>
-                    <div class="moneycard">
-                        <div class="howmoney">满500减50</div>
-                        <div class="moneyuseful">有效期至2025.12.31</div>
-                        <button class="moneynow">立即领取</button>
-                    </div>
-                </div>
+					<div class="money">
+						<div class="moneysave">优惠券</div>
+						<div class="moneycard">
+							<div class="howmoney">满500减50</div>
+							<div class="moneyuseful">有效期至2025.12.31</div>
+							<button class="moneynow">立即领取</button>
+						</div>
+					</div>
 
-                <div class="service">
-                    <div class="servicer">在线客服</div>
-                    <div class="service-phone">0571-58108110</div>
-                    <div class="service-time">工作日 9:00-22:00</div>
-                </div>
+					<div class="service">
+						<div class="servicer">在线客服</div>
+						<div class="service-phone">0571-58108110</div>
+						<div class="service-time">工作日 9:00-22:00</div>
+					</div>
 
-            </div>
-        </div>
+				</div>
+			</div>
 
-        <footer>
-            <div class="bigfooter">
-                <div class="footer-nav">
-                    <a href="#">新手帮助</a>
-                    <a href="#">账户管理</a>
-                    <a href="#">我的订单</a>
-                    <a href="#">配送方式</a>
-                    <a href="#">支付方式</a>
-                    <a href="#">售后服务</a>
-                    <a href="#">关于平台</a>
-                    <a href="#">关注张玮</a>
-                </div>
-                <div class="footer-massage">
-                    张玮的运动鞋商店 © 55122406341版权所有 | ZJBC备20251226 41号
-                </div>
-            </div>
-        </footer>
-    </div>
+			<footer>
+				<div class="bigfooter">
+					<div class="footer-nav">
+						<a href="#">新手帮助</a>
+						<a href="#">账户管理</a>
+						<a href="#">我的订单</a>
+						<a href="#">配送方式</a>
+						<a href="#">支付方式</a>
+						<a href="#">售后服务</a>
+						<a href="#">关于平台</a>
+						<a href="#">关注张玮</a>
+					</div>
+					<div class="footer-massage">
+						张玮的运动鞋商店 © 55122406341版权所有 | ZJBC备20251226 41号
+					</div>
+				</div>
+			</footer>
+		</div>
 
-    <!-- Vue逻辑 -->
-    <script>
-        const app = Vue.createApp({
-            data() {
-                return {
-                    searchKey: '',
-                    navtitle: ['全部', '篮球鞋', '休闲鞋', '足球鞋', '羽毛球鞋', '山地鞋'],
-                    li_selected_ix: 0,
-                    bannerimages: [
-                        'img/banner (1).png', 
-                        'img/banner (3).png',
-                        'img/banner (5).png'
-                    ],
-                    bannerindex: 0,
-                    allProducts: [
-                        { name: 'Nike Kybrid S2 EP ', price: 2559, image: 'ballshoes/basketball (1).jpg',categoryid:1 },
-                        { name: 'AJ11 Low "Yellow Snakeskin"', price: 773, image:'ballshoes/basketball (2).jpg',categoryid:1 },
-                        { name: 'Nike Kyrie 6 EP "USA" 美国', price: 1199, image: 'ballshoes/basketball (3).jpg',categoryid:1  },
-                        { name: 'Jordan Air Jordan 4 白水泥', price: 1334, image: 'ballshoes/basketball (4).jpg',categoryid:1  },
-                        { name: '欧文8 实战篮球鞋 白冰蓝', price: 909, image: 'ballshoes/basketball (5).jpg',categoryid:1  },
-                        { name: 'Jordan Air1 绒粉钩 女款', price: 998, image: 'ballshoes/basketball (6).jpg',categoryid:1  },
-                        { name: 'Nike 中帮复古篮球鞋 白蓝', price: 2028, image: 'ballshoes/basketball (7).jpg',categoryid:1  },
-                        { name: 'Jordan 11 pink 粉蛇', price: 1519, image: 'ballshoes/basketball (8).jpg' ,categoryid:1 },
-                        { name: 'Jordan 5 Low "Indigo Haze"', price: 589, image: 'ballshoes/basketball (9).jpg' ,categoryid:1 },
-                        { name: 'Jordan Air Jordan 5 retro', price: 1179, image: 'ballshoes/basketball (10).jpg',categoryid:1  },
-                        { name: 'Nike Dunk 橙龙虾', price: 1549, image: 'relaxshoes/relexsh (3).jpg',categoryid:2 },
-                        { name: 'Nike Dunk SB PRM WSS 蓝色', price: 1049, image: 'relaxshoes/relexsh (1).jpg',categoryid:2  },
-                        { name: 'Nike Dunk Low Desert Khaki', price: 348, image: 'relaxshoes/relexsh (2).jpg' ,categoryid:2 },
-                        { name: 'Nike Dunk SB Green Apple', price: 2099, image: 'relaxshoes/relexsh (4).jpg' ,categoryid:2 },
-                        { name: 'Nike Dunk Low 粉白 ', price: 424, image: 'relaxshoes/relexsh (5).jpg' ,categoryid:2 },
-                        { name: 'Nike Dunk Low Retro 男款板鞋', price: 629, image: 'relaxshoes/relexsh (6).jpg',categoryid:2  },
-                        { name: 'Nike Dunk SB PRM "phillies" ', price: 1995, image: 'relaxshoes/relexsh (7).jpg',categoryid:2  },
-                        { name: 'Nike Dunk 合成革 大学蓝白', price: 315, image: 'relaxshoes/relexsh (8).jpg',categoryid:2  },
-                        { name: 'Nike Dunk Low "GlitterSwoos"板鞋', price: 340, image: 'relaxshoes/relexsh (9).jpg',categoryid:2  },
-                        { name: 'Nike Dunk Low 皮革 蓝白板鞋', price: 424, image: 'relaxshoes/relexsh (10).jpg',categoryid:2  },
-                        { name: 'Nike Mercurial Vapor 16 ', price: 1199, image: 'footballshoes/football (1).jpg', categoryid:3 },
-                        { name: 'Nike Mercurial Superfly 10', price: 1057, image: 'footballshoes/football (2).jpg', categoryid:3  },
-                        { name: 'Nike Mercurial Vapor 16', price: 559, image: 'footballshoes/football (3).jpg' , categoryid:3 },
-                        { name: 'PUMA FUTURE 7 ULTIMATE ', price: 969, image: 'footballshoes/football (4).jpg' , categoryid:3 },
-                        { name: 'Nike Mercurial Vapor 16 Elite', price: 1099, image: 'footballshoes/football (5).jpg', categoryid:3  },
-                        { name: 'PUMA Future Ultimate 白色 ', price: 871, image: 'footballshoes/football (6).jpg', categoryid:3  },
-                        { name: 'adidas Copa Pure 3 粉白', price: 958, image: 'footballshoes/football (7).jpg' , categoryid:3 },
-                        { name: 'PUMA FUTURE 8 黑紫色 ', price: 317, image: 'footballshoes/football (8).jpg', categoryid:3  },
-                        { name: 'Nike Tiempo Legend 9 Elite FG ', price: 1329, image: 'footballshoes/football (9).jpg', categoryid:3  },
-                        { name: 'PUMA FUTURE 8 ULTIMATE', price: 317, image: 'footballshoes/football (10).jpg', categoryid:3  },
-                        { name: 'YONEX尤尼克斯 8500 II 红色', price: 889, image: 'badmintonshoes/badminton (1).jpg', categoryid:4 },
-                        { name: 'YONEX尤尼克斯 101cr 米粉色 ', price: 209, image: 'badmintonshoes/badminton (2).jpg', categoryid:4 },
-                        { name: 'YONEX尤尼克斯 Power Cushion 65Z3 ', price: 1057, image: 'badmintonshoes/badminton (3).jpg', categoryid:4 },
-                        { name: 'YONEX尤尼克斯 Comfort Z 3 米白红 ', price: 669, image: 'badmintonshoes/badminton (4).jpg', categoryid:4 },
-                        { name: 'YONEX尤尼克斯 Power Cushion STRIDER ', price: 358, image: 'badmintonshoes/badminton (5).jpg', categoryid:4 },
-                        { name: 'SALOMON萨洛蒙 XT-Quest 白香槟色 ', price: 1339, image: 'mountainshoes/mountainshoes (1).jpg', categoryid:5 },
-                        { name: 'SALOMON萨洛蒙 XA PRO 3D 合金灰 ', price: 855, image: 'mountainshoes/mountainshoes (2).jpg', categoryid:5  },
-                        { name: 'SALOMON萨洛蒙 Ultra Glide 2 黑色', price: 1099, image: 'mountainshoes/mountainshoes (3).jpg', categoryid:5  },
-                        { name: 'SALOMON萨洛蒙 Speedcross 6 军绿色 ', price: 999, image: 'mountainshoes/mountainshoes (4).jpg' , categoryid:5 },
-                        { name: 'SALOMON萨洛蒙 ALPHACROSS 4 白色', price: 899, image: 'mountainshoes/mountainshoes (5).jpg',categoryid:5}
-                    ],
-                    showProducts: [],
-                    hotProducts: []
-                }
-            },
-            methods: {
-                search: function() {
-                    const keyword = this.searchKey.trim();
-                    if (keyword) {
-                        const lowerKeyword = keyword.toLowerCase();
-                        this.showProducts = this.allProducts.filter(product => {
-                            const lowerProductName = product.name.toLowerCase();
-                            return lowerProductName.includes(lowerKeyword);
-                        });
-                        alert(`搜索结果：找到 ${this.showProducts.length} 件相关商品`);
-                    } else {
-                        alert('请输入搜索关键词');
-                        this.showProducts = [...this.allProducts];
-                    }
-                },
-                liclick(index) {
-                    this.li_selected_ix = index;
-                    if (index == 0) {
-                        this.showProducts = [...this.allProducts];
-                    } else {
-                        this.showProducts = this.allProducts.filter(product => product.categoryid == index);
-                    }
-                },
-                changebannerindex() {
-                    this.bannerindex = (this.bannerindex + 1) % this.bannerimages.length;
-                },
-                // 上一张轮播图
-                prevBanner() {
-                    this.bannerindex = (this.bannerindex - 1 + this.bannerimages.length) % this.bannerimages.length;
-                },
-                // 下一张轮播图
-                nextBanner() {
-                    this.bannerindex = (this.bannerindex + 1) % this.bannerimages.length;
-                }
-            },
-            created() {
-                this.showProducts = [...this.allProducts];
-                this.hotProducts = this.allProducts.slice(0, 5);
+		<!-- Vue逻辑 -->
+		<script>
+			const app = Vue.createApp({
+				data() {
+					return {
+						searchKey: '',
+						navtitle: ['全部', '篮球鞋', '休闲鞋', '足球鞋', '羽毛球鞋', '山地鞋'],
+						li_selected_ix: 0,
+						bannerimages: [
+							'img/banner (1).png',
+							'img/banner (3).png',
+							'img/banner (5).png'
+						],
+						bannerindex: 0,
+						allProducts: [{
+								name: 'Nike Kybrid S2 EP ',
+								price: 2559,
+								image: 'ballshoes/basketball (1).jpg',
+								categoryid: 1
+							},
+							{
+								name: 'AJ11 Low "Yellow Snakeskin"',
+								price: 773,
+								image: 'ballshoes/basketball (2).jpg',
+								categoryid: 1
+							},
+							{
+								name: 'Nike Kyrie 6 EP "USA" 美国',
+								price: 1199,
+								image: 'ballshoes/basketball (3).jpg',
+								categoryid: 1
+							},
+							{
+								name: 'Jordan Air Jordan 4 白水泥',
+								price: 1334,
+								image: 'ballshoes/basketball (4).jpg',
+								categoryid: 1
+							},
+							{
+								name: '欧文8 实战篮球鞋 白冰蓝',
+								price: 909,
+								image: 'ballshoes/basketball (5).jpg',
+								categoryid: 1
+							},
+							{
+								name: 'Jordan Air1 绒粉钩 女款',
+								price: 998,
+								image: 'ballshoes/basketball (6).jpg',
+								categoryid: 1
+							},
+							{
+								name: 'Nike 中帮复古篮球鞋 白蓝',
+								price: 2028,
+								image: 'ballshoes/basketball (7).jpg',
+								categoryid: 1
+							},
+							{
+								name: 'Jordan 11 pink 粉蛇',
+								price: 1519,
+								image: 'ballshoes/basketball (8).jpg',
+								categoryid: 1
+							},
+							{
+								name: 'Jordan 5 Low "Indigo Haze"',
+								price: 589,
+								image: 'ballshoes/basketball (9).jpg',
+								categoryid: 1
+							},
+							{
+								name: 'Jordan Air Jordan 5 retro',
+								price: 1179,
+								image: 'ballshoes/basketball (10).jpg',
+								categoryid: 1
+							},
+							{
+								name: 'Nike Dunk 橙龙虾',
+								price: 1549,
+								image: 'relaxshoes/relexsh (3).jpg',
+								categoryid: 2
+							},
+							{
+								name: 'Nike Dunk SB PRM WSS 蓝色',
+								price: 1049,
+								image: 'relaxshoes/relexsh (1).jpg',
+								categoryid: 2
+							},
+							{
+								name: 'Nike Dunk Low Desert Khaki',
+								price: 348,
+								image: 'relaxshoes/relexsh (2).jpg',
+								categoryid: 2
+							},
+							{
+								name: 'Nike Dunk SB Green Apple',
+								price: 2099,
+								image: 'relaxshoes/relexsh (4).jpg',
+								categoryid: 2
+							},
+							{
+								name: 'Nike Dunk Low 粉白 ',
+								price: 424,
+								image: 'relaxshoes/relexsh (5).jpg',
+								categoryid: 2
+							},
+							{
+								name: 'Nike Dunk Low Retro 男款板鞋',
+								price: 629,
+								image: 'relaxshoes/relexsh (6).jpg',
+								categoryid: 2
+							},
+							{
+								name: 'Nike Dunk SB PRM "phillies" ',
+								price: 1995,
+								image: 'relaxshoes/relexsh (7).jpg',
+								categoryid: 2
+							},
+							{
+								name: 'Nike Dunk 合成革 大学蓝白',
+								price: 315,
+								image: 'relaxshoes/relexsh (8).jpg',
+								categoryid: 2
+							},
+							{
+								name: 'Nike Dunk Low "GlitterSwoos"板鞋',
+								price: 340,
+								image: 'relaxshoes/relexsh (9).jpg',
+								categoryid: 2
+							},
+							{
+								name: 'Nike Dunk Low 皮革 蓝白板鞋',
+								price: 424,
+								image: 'relaxshoes/relexsh (10).jpg',
+								categoryid: 2
+							},
+							{
+								name: 'Nike Mercurial Vapor 16 ',
+								price: 1199,
+								image: 'footballshoes/football (1).jpg',
+								categoryid: 3
+							},
+							{
+								name: 'Nike Mercurial Superfly 10',
+								price: 1057,
+								image: 'footballshoes/football (2).jpg',
+								categoryid: 3
+							},
+							{
+								name: 'Nike Mercurial Vapor 16',
+								price: 559,
+								image: 'footballshoes/football (3).jpg',
+								categoryid: 3
+							},
+							{
+								name: 'PUMA FUTURE 7 ULTIMATE ',
+								price: 969,
+								image: 'footballshoes/football (4).jpg',
+								categoryid: 3
+							},
+							{
+								name: 'Nike Mercurial Vapor 16 Elite',
+								price: 1099,
+								image: 'footballshoes/football (5).jpg',
+								categoryid: 3
+							},
+							{
+								name: 'PUMA Future Ultimate 白色 ',
+								price: 871,
+								image: 'footballshoes/football (6).jpg',
+								categoryid: 3
+							},
+							{
+								name: 'adidas Copa Pure 3 粉白',
+								price: 958,
+								image: 'footballshoes/football (7).jpg',
+								categoryid: 3
+							},
+							{
+								name: 'PUMA FUTURE 8 黑紫色 ',
+								price: 317,
+								image: 'footballshoes/football (8).jpg',
+								categoryid: 3
+							},
+							{
+								name: 'Nike Tiempo Legend 9 Elite FG ',
+								price: 1329,
+								image: 'footballshoes/football (9).jpg',
+								categoryid: 3
+							},
+							{
+								name: 'PUMA FUTURE 8 ULTIMATE',
+								price: 317,
+								image: 'footballshoes/football (10).jpg',
+								categoryid: 3
+							},
+							{
+								name: 'YONEX尤尼克斯 8500 II 红色',
+								price: 889,
+								image: 'badmintonshoes/badminton (1).jpg',
+								categoryid: 4
+							},
+							{
+								name: 'YONEX尤尼克斯 101cr 米粉色 ',
+								price: 209,
+								image: 'badmintonshoes/badminton (2).jpg',
+								categoryid: 4
+							},
+							{
+								name: 'YONEX尤尼克斯 Power Cushion 65Z3 ',
+								price: 1057,
+								image: 'badmintonshoes/badminton (3).jpg',
+								categoryid: 4
+							},
+							{
+								name: 'YONEX尤尼克斯 Comfort Z 3 米白红 ',
+								price: 669,
+								image: 'badmintonshoes/badminton (4).jpg',
+								categoryid: 4
+							},
+							{
+								name: 'YONEX尤尼克斯 Power Cushion STRIDER ',
+								price: 358,
+								image: 'badmintonshoes/badminton (5).jpg',
+								categoryid: 4
+							},
+							{
+								name: 'SALOMON萨洛蒙 XT-Quest 白香槟色 ',
+								price: 1339,
+								image: 'mountainshoes/mountainshoes (1).jpg',
+								categoryid: 5
+							},
+							{
+								name: 'SALOMON萨洛蒙 XA PRO 3D 合金灰 ',
+								price: 855,
+								image: 'mountainshoes/mountainshoes (2).jpg',
+								categoryid: 5
+							},
+							{
+								name: 'SALOMON萨洛蒙 Ultra Glide 2 黑色',
+								price: 1099,
+								image: 'mountainshoes/mountainshoes (3).jpg',
+								categoryid: 5
+							},
+							{
+								name: 'SALOMON萨洛蒙 Speedcross 6 军绿色 ',
+								price: 999,
+								image: 'mountainshoes/mountainshoes (4).jpg',
+								categoryid: 5
+							},
+							{
+								name: 'SALOMON萨洛蒙 ALPHACROSS 4 白色',
+								price: 899,
+								image: 'mountainshoes/mountainshoes (5).jpg',
+								categoryid: 5
+							}
+						],
+						showProducts: [],
+						hotProducts: []
+					}
+				},
+				methods: {
+					search: function() {
+						const keyword = this.searchKey.trim();
+						if (keyword) {
+							const lowerKeyword = keyword.toLowerCase();
+							this.showProducts = this.allProducts.filter(product => {
+								const lowerProductName = product.name.toLowerCase();
+								return lowerProductName.includes(lowerKeyword);
+							});
+							alert(`搜索结果：找到 ${this.showProducts.length} 件相关商品`);
+						} else {
+							alert('请输入搜索关键词');
+							this.showProducts = [...this.allProducts];
+						}
+					},
+					liclick(index) {
+						this.li_selected_ix = index;
+						if (index == 0) {
+							this.showProducts = [...this.allProducts];
+						} else {
+							this.showProducts = this.allProducts.filter(product => product.categoryid == index);
+						}
+					},
+					changebannerindex() {
+						this.bannerindex = (this.bannerindex + 1) % this.bannerimages.length;
+					},
+					// 上一张轮播图
+					prevBanner() {
+						this.bannerindex = (this.bannerindex - 1 + this.bannerimages.length) % this.bannerimages.length;
+					},
+					// 下一张轮播图
+					nextBanner() {
+						this.bannerindex = (this.bannerindex + 1) % this.bannerimages.length;
+					}
+				},
+				created() {
+					this.showProducts = [...this.allProducts];
+					this.hotProducts = this.allProducts.slice(0, 5);
 
-                setInterval(this.changebannerindex, 1000);
-            }
-        });
-        app.mount('#app');
-    </script>
-</body>
+					setInterval(this.changebannerindex, 1000);
+				}
+			});
+			app.mount('#app');
+		</script>
+	</body>
 </html>
