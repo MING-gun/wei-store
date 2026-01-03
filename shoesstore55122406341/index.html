@@ -182,10 +182,17 @@
 					<div class="money">
 						<div class="moneysave">优惠券</div>
 						<div class="moneycard">
-							<div class="howmoney">满500减50</div>
-							<div class="moneyuseful">有效期至2025.12.31</div>
-							<button class="moneynow">立即领取</button>
-						</div>
+								<div class="howmoney">满500减50</div>
+								<div class="moneyuseful">有效期至2025.12.31</div>
+								<button class="moneynow" @click="showPopup">立即领取</button>
+							</div>
+							
+							<!-- 弹出层 -->
+							<div v-if="showLogoPopup" class="popup-overlay" @click="closePopup">
+								<div class="popup-content" @click.stop>
+									<img src="img/logo.jpg" alt="logo" class="popup-image" />
+								</div>
+							</div>
 					</div>
 
 					<div class="service">
@@ -231,6 +238,7 @@
 						],
 						bannerindex: 0,
 						bannerTimer: null,
+						showLogoPopup: false,
 						allProducts: [{
 								name: 'Nike Kybrid S2 EP ',
 								price: 2559,
@@ -522,6 +530,14 @@
 						if (!this.bannerTimer) {
 							this.bannerTimer = setInterval(this.changebannerindex, 1000);
 						}
+					},
+					// 显示弹出层
+					showPopup() {
+						this.showLogoPopup = true;
+					},
+					// 关闭弹出层
+					closePopup() {
+						this.showLogoPopup = false;
 					}
 				},
 				created() {
