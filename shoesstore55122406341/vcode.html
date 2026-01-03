@@ -44,9 +44,31 @@
 					<label>验证码：</label>
 					<div class="input-container">
 						<input type="text" placeholder="请输入验证码" class="form-input vcode-input">
-						<button class="get-vcode-btn">获取验证码</button>
+						<button class="get-vcode-btn" onclick="getVcode(this)">获取验证码</button>
 					</div>
 				</div>
+
+				<script>
+					// 简化版获取验证码倒计时
+					function getVcode(btn) {
+						if (btn.disabled) return;
+						
+						let seconds = 60;
+						btn.disabled = true;
+						btn.textContent = `获取验证码(${seconds}s)`;
+						
+						const timer = setInterval(() => {
+							seconds--;
+							btn.textContent = `获取验证码(${seconds}s)`;
+							
+							if (seconds <= 0) {
+								clearInterval(timer);
+								btn.disabled = false;
+								btn.textContent = '获取验证码';
+							}
+						}, 1000);
+					}
+				</script>
 
 				<!-- 同意协议行 -->
 				<div class="form-item agree">
