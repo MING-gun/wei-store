@@ -169,7 +169,7 @@ body {
 
 .logo img {
 	height: 80px;
-	width: 150px;
+	width: 140px;
 	display: block;
 	object-fit: contain;
 }
@@ -178,20 +178,17 @@ body {
 /* 导航栏 */
 .nav {
 	background-color: transparent;
-	padding: 0;
 	margin: 0;
 	text-align: center;
 	display: flex;
-	justify-content: center;
-	align-items: center;
 	flex: 1;
 }
 
 .nav ul {
 	font-size: 1.6rem;
-	width: auto;
+	width: 600px;
 	height: 50px;
-	margin: 0;
+	margin-left: 350px;
 	display: flex;
 	gap: 30px;
 	justify-content: center;
