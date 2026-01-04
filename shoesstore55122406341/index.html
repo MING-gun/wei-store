@@ -45,7 +45,7 @@
 			<!-- logo + 导航栏 -->
 			<div class="logo-nav-row">
 				<div class="logo">
-					<h1><a href="#"><img src="img/logo.jpg" alt="张玮的运动鞋商店" /></a></h1>
+					<a href="#"><img src="img/logo.jpg" alt="张玮的运动鞋商店" /></a>
 				</div>
 				<!-- 导航栏与logo并排 -->
 				<div class="nav">
@@ -274,8 +274,8 @@
 						<a href="#">配送方式</a>
 						<a href="#">支付方式</a>
 						<a href="#">售后服务</a>
-						<a href="#">关于平台</a>
-						<a href="#">关注张玮</a>
+						<a href="#">关于我们</a>
+						<a href="#">联系我们</a>
 					</div>
 					
 					<!-- 版权信息 -->
@@ -548,14 +548,13 @@
 					}
 				},
 				methods: {
-					search: function() {
+					search() {
 						const keyword = this.searchKey.trim();
 						if (keyword) {
 							const lowerKeyword = keyword.toLowerCase();
-							this.showProducts = this.allProducts.filter(product => {
-								const lowerProductName = product.name.toLowerCase();
-								return lowerProductName.includes(lowerKeyword);
-							});
+							this.showProducts = this.allProducts.filter(product => 
+								product.name.toLowerCase().includes(lowerKeyword)
+							);
 							alert(`搜索结果：找到 ${this.showProducts.length} 件相关商品`);
 						} else {
 							alert('请输入搜索关键词');
@@ -564,14 +563,9 @@
 					},
 					liclick(index) {
 						this.li_selected_ix = index;
-						if (index == 0) {
-							this.showProducts = [...this.allProducts];
-						} else {
-							this.showProducts = this.allProducts.filter(product => product.categoryid == index);
-						}
-					},
-					changebannerindex() {
-						this.bannerindex = (this.bannerindex + 1) % this.bannerimages.length;
+						this.showProducts = index === 0 
+							? [...this.allProducts] 
+							: this.allProducts.filter(product => product.categoryid === index);
 					},
 					// 上一张轮播图
 					prevBanner() {
@@ -591,7 +585,9 @@
 					// 恢复轮播
 					resumeBanner() {
 						if (!this.bannerTimer) {
-							this.bannerTimer = setInterval(this.changebannerindex, 1000);
+							this.bannerTimer = setInterval(() => {
+								this.bannerindex = (this.bannerindex + 1) % this.bannerimages.length;
+							}, 1000);
 						}
 					},
 					// 显示弹出层
@@ -606,8 +602,9 @@
 				created() {
 					this.showProducts = [...this.allProducts];
 					this.hotProducts = this.allProducts.slice(0, 5);
-
-					this.bannerTimer = setInterval(this.changebannerindex, 1000);
+					this.bannerTimer = setInterval(() => {
+						this.bannerindex = (this.bannerindex + 1) % this.bannerimages.length;
+					}, 1000);
 				}
 			});
 			app.mount('#app');
